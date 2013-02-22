@@ -1,0 +1,37 @@
+{
+  "name": "grunt-percolator-task",
+  "description": "Soulwire's CakeFile Percolator ported to grunt task",
+  "version": "0.1.0",
+  "homepage": "https://github.com/samny/grunt-percolator-task",
+  "author": {
+    "name": "Samuel Nystedt",
+    "email": "samuel.nystedt@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/samny/grunt-percolator-task.git"
+  },
+  "bugs": {
+    "url": "https://github.com/samny/grunt-percolator-task/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/samny/grunt-percolator-task/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "grunt.js",
+  "bin": "bin/grunt-percolator-task",
+  "engines": {
+    "node": "*"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt": "~0.3.17"
+  },
+  "keywords": [
+    "gruntplugin"
+  ]
+}
