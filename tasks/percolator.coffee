@@ -109,12 +109,14 @@ module.exports = (grunt)->
 
     --------------------------------------------------
     ###
-    grunt.registerHelper "exec", (command, callback) ->
+    helper = (command, callback) ->
         exec command, (err, stdout, stderr) ->
             if err or stderr
                 callback err or stderr, stdout
                 return
             callback null, stdout
+
+    helper()
 
     grunt.registerTask 'percolator', 'Concatenate CoffeeScript ordered by imports', ->
         options = grunt.config(this.name) || {}
