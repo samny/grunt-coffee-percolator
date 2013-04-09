@@ -11,6 +11,17 @@ Then add this line to your project's `grunt.js` gruntfile:
 grunt.loadNpmTasks('grunt-percolator-task');
 ```
 
+```javascript
+
+percolator: {
+  source: 'path/to/coffee/folder',
+  output: 'path/to/js/folder/main.perc.js',
+  main: 'main.coffee',
+  compile: true,
+  opts: '--lint'
+}
+```
+
 [grunt]: http://gruntjs.com/
 [getting_started]: https://github.com/gruntjs/grunt/blob/master/docs/getting_started.md
 
