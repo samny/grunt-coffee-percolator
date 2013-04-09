@@ -15,7 +15,7 @@ grunt.loadNpmTasks('grunt-percolator-task');
 
 percolator: {
   source: 'path/to/coffee/folder',
-  output: 'path/to/js/folder/main.perc.js',
+  output: 'path/to/js/folder/main.js',
   main: 'main.coffee',
   compile: true,
   opts: '--lint'
@@ -27,3 +27,6 @@ percolator: {
 
 ## Documentation
 For usage and documentation, see Soulwire's repo at https://github.com/soulwire/Coffee-Percolator
+
+### Note
+Make sure not to set a watch on the folder you are compiling to, this will force a loop.
