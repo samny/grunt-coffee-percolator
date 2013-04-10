@@ -8,10 +8,6 @@ Install this grunt plugin next to your project's [grunt.js gruntfile][getting_st
 Then add this line to your project's `grunt.js` gruntfile:
 
 ```javascript
-grunt.loadNpmTasks('grunt-percolator-task');
-```
-
-```javascript
 
 percolator: {
   source: 'path/to/coffee/folder',
@@ -20,6 +16,11 @@ percolator: {
   compile: true,
   opts: '--lint'
 }
+```
+
+```javascript
+  grunt.loadNpmTasks('grunt-coffee-percolator');
+  grunt.registerTask('default', ['coffee','percolator'])
 ```
 
 [grunt]: http://gruntjs.com/
