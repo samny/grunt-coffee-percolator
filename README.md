@@ -1,7 +1,6 @@
 # grunt-coffee-percolator
 
 > Soulwire's CakeFile Percolator ported to grunt task
-
 > For usage and documentation, see Soulwire's repo at https://github.com/soulwire/Coffee-Percolator
 
 ## Getting Started
