@@ -10,6 +10,7 @@ Licensed under the MIT license.
 ###
 
 module.exports = (grunt)->
+
     ###
     --------------------------------------------------
 
@@ -116,8 +117,6 @@ module.exports = (grunt)->
                 return
             callback null, stdout
 
-    helper()
-
     grunt.registerTask 'percolator', 'Concatenate CoffeeScript ordered by imports', ->
         options = grunt.config(this.name) || {}
         source = options.source || '.'
@@ -183,10 +182,9 @@ module.exports = (grunt)->
 
             if doCompile
                 done = task.async();
-                grunt.helper('exec', "coffee -c #{opts} #{merged}", (error, stdout)->
+                helper "coffee -c #{opts} #{merged}", (error, stdout)->
                     if error then throw error else
                         if fs.existsSync merged then fs.unlink merged, ( error ) -> throw error if error
 
                     grunt.log.ok("CoffeeScript compiled into: #{output}")
                     done()
-                )
