@@ -1,33 +1,72 @@
-# grunt-percolator-task
+# grunt-coffee-percolator
 
-Soulwire's CakeFile Percolator ported to grunt task. 
+> Soulwire's CakeFile Percolator ported to grunt task
+
+> For usage and documentation, see Soulwire's repo at https://github.com/soulwire/Coffee-Percolator
 
 ## Getting Started
-Install this grunt plugin next to your project's [grunt.js gruntfile][getting_started] with: `npm install grunt-percolator-task`
+This plugin requires Grunt `~0.4.1`
 
-Then add this line to your project's `grunt.js` gruntfile:
+If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
-```javascript
-
-percolator: {
-  source: 'path/to/coffee/folder',
-  output: 'path/to/js/folder/main.js',
-  main: 'main.coffee',
-  compile: true,
-  opts: '--lint'
-}
+```shell
+npm install grunt-coffee-percolator --save-dev
 ```
 
-```javascript
-  grunt.loadNpmTasks('grunt-coffee-percolator');
-  grunt.registerTask('default', ['coffee','percolator'])
+One the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
+
+```js
+grunt.loadNpmTasks('grunt-coffee-percolator');
 ```
 
-[grunt]: http://gruntjs.com/
-[getting_started]: https://github.com/gruntjs/grunt/blob/master/docs/getting_started.md
+## The "coffee_percolator" task
 
-## Documentation
-For usage and documentation, see Soulwire's repo at https://github.com/soulwire/Coffee-Percolator
+### Overview
+In your project's Gruntfile, add a section named `coffee_percolator` to the data object passed into `grunt.initConfig()`.
 
-### Note
-Make sure not to set a watch on the folder you are compiling to, this will force a loop.
+```js
+grunt.initConfig({
+  percolator: {
+    source: 'path/to/js/folder',
+    output: 'path/to/js/folder/main.js',
+    main: 'main.coffee',
+    compile: true,
+    opts: '--lint --bare'
+  },
+})
+```
+
+### Options
+
+#### source
+Type: `String`
+Default value: `'.'`
+
+A string value that specifies the base folder of your js/coffee.
+
+#### output
+Type: `String`
+Default value: `'scripts.min.js'`
+
+A string value that is the compiled js file.
+
+#### main
+Type: `String`
+Default value: `'main.coffee'`
+
+A string value that is the main coffee-file to compile.
+
+#### compile
+Type: `Boolean`
+Default value: `true`
+
+A boolean for if the files should be compiled or not.
+
+#### opts
+Type: `String`
+Default value: `'--lint'`
+
+A string value that of one or more coffee options.
+
+## Release History
+_(Nothing yet)_

@@ -1,3 +1,13 @@
+/*
+ * grunt-coffee-percolator
+ * https://github.com/samny/grunt-coffee-percolator
+ *
+ * Copyright (c) 2013 samny, jnaO
+ * Licensed under the MIT license.
+ */
+
+'use strict';
+
 module.exports = function(grunt) {
 
   // Project configuration.
@@ -6,7 +16,7 @@ module.exports = function(grunt) {
       files: ['test/**/*.js']
     },
     lint: {
-      files: ['grunt.js', 'tasks/**/*.js', 'test/**/*.js']
+      files: ['Gruntfile.js', 'tasks/**/*.js', 'test/**/*.js']
     },
     watch: {
       files: '<config:lint.files>',
@@ -38,3 +48,4 @@ module.exports = function(grunt) {
   grunt.registerTask('default', 'lint test');
 
 };
+
