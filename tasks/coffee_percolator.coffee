@@ -30,6 +30,9 @@ module.exports = (grunt)->
     --------------------------------------------------
     ###
 
+    FILETYPE = 'coffee'
+    REGEX_IS_FILETYPE = /\.coffee$/
+    REGEX_IS_NOT_FILETYPE = /\.(?!coffee)/
     REGEX_FILENAME = /\.\w+$/i
     REGEX_IMPORT = /#\s?import\s+?([\w\.\-\/\*]+)/g
 
@@ -65,7 +68,7 @@ module.exports = (grunt)->
             file = "#{path}/#{file}"
             stat = fs.statSync file
 
-            if stat.isFile() and /\.coffee$/.test file then result.push file
+            if stat.isFile() and REGEX_IS_FILETYPE.test file then result.push file
             else if stat.isDirectory() then traverse file, result
 
         result
@@ -117,13 +120,25 @@ module.exports = (grunt)->
                 return
             callback null, stdout
 
-    grunt.registerTask 'percolator', 'Concatenate CoffeeScript ordered by imports', ->
+    grunt.registerTask 'percolator', 'Concatenate script files ordered by imports', ->
         options = grunt.config(this.name) || {}
         source = options.source || '.'
         output = options.output || 'scripts.min.js'
         main = options.main || 'main.coffee'
         opts = options.opts || '--lint'
         doCompile = options.compile || true
+
+        
+        # Use JS mode if main script file is .js
+        jsMode = /\.js$/.test main
+
+        if jsMode 
+            doCompile = false
+            FILETYPE = 'js'
+            REGEX_IS_FILETYPE = /\.js$/
+            REGEX_IS_NOT_FILETYPE = /\.(?!js)/
+            REGEX_IMPORT = /\/\/\s?import\s+?([\w\.\-\/\*]+)/g
+
 
         task = this;
         files = traverse source
@@ -156,7 +171,7 @@ module.exports = (grunt)->
                         # Testing if file exists for each iteration to allow for '.' in filenames (ie. jquery.plugin.js) when using dot syntax in imports
                         while not map[ key ]
                             failedKey = key
-                            target = target.replace /\.(?!coffee)/, '/'
+                            target = target.replace REGEX_IS_NOT_FILETYPE, '/'
                             key = [ source, target ].join '/'
                             if key is failedKey then grunt.fail.warn("No file matching import: #{key}")
 
@@ -175,10 +190,13 @@ module.exports = (grunt)->
             # Concatenate contents into one file
             content = ( node.content for node in chain ).join '\n\n'
 
-            merged = output.replace( REGEX_FILENAME, '' ) + '.coffee'
+            merged = output.replace( REGEX_FILENAME, '' ) + '.' + FILETYPE
             writtenContent = grunt.file.write merged, content
 
             throw 'Error: failed to write file' if not writtenContent
+
+            if jsMode
+                grunt.log.ok("Concatenated #{main} and it's dependency chain into: #{output}")
 
             if doCompile
                 done = task.async();
