@@ -35,6 +35,29 @@ grunt.initConfig({
 })
 ```
 
+### Multitask
+
+```js
+grunt.initConfig({
+  percolator: {
+    main:{
+        source: 'path/to/js/folder',
+        output: 'path/to/js/folder/main.js',
+        main: 'main.coffee',
+        compile: true,
+        opts: '--lint --bare'
+    },
+    helpers:{
+        source: 'path/to/js/helper/folder',
+        output: 'path/to/js/helper/folder/main.js',
+        main: 'helper.coffee',
+        compile: true,
+        opts: '--lint --bare'
+    }
+  },
+})
+```
+
 ### Options
 
 #### source
