@@ -120,13 +120,15 @@ module.exports = (grunt)->
                 return
             callback null, stdout
 
-    grunt.registerTask 'percolator', 'Concatenate script files ordered by imports', ->
+    grunt.registerMultiTask 'percolator', 'Concatenate CoffeeScript ordered by imports', ->
+
         options = grunt.config(this.name) || {}
-        source = options.source || '.'
-        output = options.output || 'scripts.min.js'
-        main = options.main || 'main.coffee'
-        opts = options.opts || '--lint'
-        doCompile = options.compile || true
+
+        source = this.data.source || '.'
+        output = this.data.output || 'scripts.min.js'
+        main = this.data.main || 'main.coffee'
+        opts = this.data.opts || '--lint'
+        doCompile = this.data.compile || true
 
         
         # Use JS mode if main script file is .js
