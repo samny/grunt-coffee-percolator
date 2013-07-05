@@ -35,7 +35,7 @@ grunt.initConfig({
 })
 ```
 
-## Multitask
+### Multitask
 
 ```js
 grunt.initConfig({
