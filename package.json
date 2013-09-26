@@ -1,7 +1,7 @@
 {
   "name": "grunt-coffee-percolator",
   "description": "Soulwire's CakeFile Percolator ported to grunt task",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "homepage": "https://github.com/samny/grunt-coffee-percolator",
   "author": {
     "name": "Samuel Nystedt, jnaO, @silviopaganini",
