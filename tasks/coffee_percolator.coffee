@@ -202,7 +202,7 @@ module.exports = (grunt)->
 
             if doCompile
                 done = task.async();
-                helper "coffee -c #{merged}", (error, stdout)->
+                helper "coffee -c #{merged} #{opts}", (error, stdout)->
                     if error then throw error else
                         if fs.existsSync merged then fs.unlink merged, ( error ) -> throw error if error
 
