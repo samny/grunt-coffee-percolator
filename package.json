@@ -1,7 +1,7 @@
 {
-  "name": "grunt-coffee-percolator",
-  "description": "Soulwire's CakeFile Percolator ported to grunt task",
-  "version": "0.1.2",
+  "name": "grunt-coffee-percolator-v2",
+  "description": "Soulwire's CakeFile Percolator ported to grunt task. Cleaned up and updated for new CoffeeScript compiler",
+  "version": "0.2.0",
   "homepage": "https://github.com/samny/grunt-coffee-percolator",
   "author": {
     "name": "Samuel Nystedt, jnaO, @silviopaganini",
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/samny/grunt-coffee-percolator.git"
+    "url": "https://github.com/silviopaganini/grunt-coffee-percolator.git"
   },
   "bugs": {
-    "url": "https://github.com/samny/grunt-coffee-percolator/issues"
+    "url": "https://github.com/silviopaganini/grunt-coffee-percolator/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/samny/grunt-coffee-percolator/blob/master/LICENSE-MIT"
+      "url": "https://github.com/silviopaganini/grunt-coffee-percolator/blob/master/LICENSE-MIT"
     }
   ],
   "main": "Gruntfile.js",
@@ -25,7 +25,6 @@
     "node": ">= 0.8.0"
   },
   "scripts": {
-    "test": "grunt test"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.1.1",
