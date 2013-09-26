@@ -3,6 +3,14 @@
 > Soulwire's CakeFile Percolator ported to grunt task
 > For usage and documentation, see Soulwire's repo at https://github.com/soulwire/Coffee-Percolator
 
+
+## Release History
+
+Original authors not replying any Pull Request, so this project was taken over and pushed to a new NPM 
+
+`grunt-coffee-percolator-v2`
+
+
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
 
@@ -15,7 +23,7 @@ npm install grunt-coffee-percolator-v2 --save-dev
 One the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
 ```js
-grunt.loadNpmTasks('grunt-coffee-percolator');
+grunt.loadNpmTasks('grunt-coffee-percolator-v2');
 ```
 
 ## The "coffee_percolator" task
@@ -90,8 +98,3 @@ Default value: `''`
 
 A string value that of one or more coffee options.
 
-## Release History
-
-Original authors not replying any Pull Request, so this project was taken over and pushed to a new NPM 
-
-`grunt-coffee-percolator-v2`
