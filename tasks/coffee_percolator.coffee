@@ -127,7 +127,7 @@ module.exports = (grunt)->
         source = this.data.source || '.'
         output = this.data.output || 'scripts.min.js'
         main = this.data.main || 'main.coffee'
-        opts = this.data.opts || '--join'
+        opts = this.data.opts || ''
         doCompile = this.data.compile || true
 
         
