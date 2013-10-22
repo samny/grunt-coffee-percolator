@@ -1,5 +1,5 @@
 {
-  "name": "grunt-coffee-percolator-v2",
+  "name": "grunt-coffee-percolator",
   "description": "Soulwire's CakeFile Percolator ported to grunt task. Cleaned up and updated for new CoffeeScript compiler",
   "version": "0.2.3",
   "homepage": "https://github.com/samny/grunt-coffee-percolator",
