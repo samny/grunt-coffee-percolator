@@ -127,7 +127,7 @@ module.exports = (grunt)->
         source = this.data.source || '.'
         output = this.data.output || 'scripts.min.js'
         main = this.data.main || 'main.coffee'
-        opts = this.data.opts || '--lint'
+        opts = this.data.opts || ''
         doCompile = this.data.compile || true
 
         
@@ -151,7 +151,8 @@ module.exports = (grunt)->
 
             # Map all source paths to Nodes
             map = {}
-            add = ( node, name ) -> ( map[ name ] ?= [] ).push node
+            add = ( node, name ) -> 
+                ( map[ name ] ?= [] ).push node
 
             for node in nodes
 
@@ -191,7 +192,6 @@ module.exports = (grunt)->
 
             # Concatenate contents into one file
             content = ( node.content for node in chain ).join '\n\n'
-
             merged = output.replace( REGEX_FILENAME, '' ) + '.' + FILETYPE
             writtenContent = grunt.file.write merged, content
 
@@ -202,7 +202,7 @@ module.exports = (grunt)->
 
             if doCompile
                 done = task.async();
-                helper "coffee -c #{opts} #{merged}", (error, stdout)->
+                helper "coffee -c #{merged} #{opts}", (error, stdout)->
                     if error then throw error else
                         if fs.existsSync merged then fs.unlink merged, ( error ) -> throw error if error
 

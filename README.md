@@ -3,19 +3,27 @@
 > Soulwire's CakeFile Percolator ported to grunt task
 > For usage and documentation, see Soulwire's repo at https://github.com/soulwire/Coffee-Percolator
 
+
+## Release History
+
+Original authors not replying any Pull Request, so this project was taken over and pushed to a new NPM 
+
+`grunt-coffee-percolator-v2`
+
+
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
 
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
 ```shell
-npm install grunt-coffee-percolator --save-dev
+npm install grunt-coffee-percolator-v2 --save-dev
 ```
 
 One the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
 ```js
-grunt.loadNpmTasks('grunt-coffee-percolator');
+grunt.loadNpmTasks('grunt-coffee-percolator-v2');
 ```
 
 ## The "coffee_percolator" task
@@ -30,7 +38,7 @@ grunt.initConfig({
     output: 'path/to/js/folder/main.js',
     main: 'main.coffee',
     compile: true,
-    opts: '--lint --bare'
+    opts: '--bare'
   },
 })
 ```
@@ -45,14 +53,14 @@ grunt.initConfig({
         output: 'path/to/js/folder/main.js',
         main: 'main.coffee',
         compile: true,
-        opts: '--lint --bare'
+        opts: '--bare'
     },
     helpers:{
         source: 'path/to/js/helper/folder',
         output: 'path/to/js/helper/folder/main.js',
         main: 'helper.coffee',
         compile: true,
-        opts: '--lint --bare'
+        opts: '--bare'
     }
   },
 })
@@ -86,9 +94,7 @@ A boolean for if the files should be compiled or not.
 
 #### opts
 Type: `String`
-Default value: `'--lint'`
+Default value: `''`
 
 A string value that of one or more coffee options.
 
-## Release History
-_(Nothing yet)_
