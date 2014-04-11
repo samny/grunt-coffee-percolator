@@ -21,6 +21,7 @@ module.exports = (grunt)->
 
     fs = require 'fs'
     {exec} = require 'child_process'
+    {spawn} = require 'child_process'
 
     ###
     --------------------------------------------------
@@ -114,11 +115,40 @@ module.exports = (grunt)->
     --------------------------------------------------
     ###
     helper = (command, callback) ->
-        exec command, (err, stdout, stderr) ->
-            if err or stderr
-                callback err or stderr, stdout
-                return
-            callback null, stdout
+
+        arr = command.split(" ")
+        command = arr[0]
+        opts = arr.slice(1,arr.length)
+
+        cfee = spawn command,opts,
+            stdio: ['pipe', 'pipe', process.stderr]
+
+
+        cfee.stdout.on 'data', (data)->
+            grunt.log.ok(data)
+
+        # cfee.stderr.on 'data', (data)->
+        #     grunt.log.error(data)
+
+
+        cfee.on 'close', (code)->
+            if code == 0
+                callback(null, null)
+            else
+                callback("Compilation Failed", null)
+        cfee.on 'end', (code)->
+            if code == 0
+                callback(null, null)
+            else
+                callback("Compilation Failed", null)            
+            debugger
+
+
+        # exec command, (err, stdout, stderr) ->
+        #     if err or stderr
+        #         callback err or stderr, stdout
+        #         return
+        #     callback null, stdout
 
     grunt.registerMultiTask 'percolator', 'Concatenate CoffeeScript ordered by imports', ->
 
@@ -202,9 +232,16 @@ module.exports = (grunt)->
 
             if doCompile
                 done = task.async();
-                helper "coffee -c #{merged} #{opts}", (error, stdout)->
-                    if error then throw error else
-                        if fs.existsSync merged then fs.unlink merged, ( error ) -> throw error if error
 
-                    grunt.log.ok("CoffeeScript compiled into: #{output}")
+
+                coffee_exec = if process.platform == "win32" then "coffee.CMD" else "coffee";
+
+                cmd = if opts?.length > 0 then "#{coffee_exec} #{opts} -c #{merged}" else "#{coffee_exec} -c #{merged}"
+
+                helper cmd, (error, stdout)->
+                    if error 
+                        grunt.log.error(error)
+                    else
+                        if fs.existsSync merged then fs.unlink merged, ( error ) -> throw error if error
+                        grunt.log.ok("CoffeeScript compiled into: #{output}")
                     done()
